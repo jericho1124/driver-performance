@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('driver_profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('driver_id');
+            $table->unsignedBigInteger('driver_id');
             $table->date('date');
             $table->integer('delays_minutes')->default(0);
             $table->integer('behavioral_problems')->default(0);
             $table->integer('violations_count')->default(0);
             $table->integer('accidents_count')->default(0);
-            $table->decimal('rating', 3, 2)->nullable();
+            $table->decimal('rating', 3, 2);
             $table->timestamps();
 
             $table->index('driver_id');
