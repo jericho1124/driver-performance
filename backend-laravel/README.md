@@ -1,59 +1,106 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Driver Performance API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Laravel API for tracking and analyzing driver performance metrics.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Driver performance tracking (delays, accidents, violations, ratings)
+- Analytics endpoints with Redis caching
+- CSV data import
+- MySQL database with optimized queries
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Setup
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Prerequisites
 
-## Learning Laravel
+- PHP 8.2+
+- Composer
+- Docker & Docker Compose
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### Installation
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. **Start Docker services** (MySQL & Redis):
+```bash
+docker-compose up -d
+```
 
-## Laravel Sponsors
+2. **Install dependencies**:
+```bash
+composer install
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+3. **Configure environment**:
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-### Premium Partners
+4. **Update `.env` database settings**:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=driver_db
+DB_USERNAME=root
+DB_PASSWORD=root
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+REDIS_HOST=127.0.0.1
+REDIS_PORT=6379
+```
 
-## Contributing
+5. **Run migrations**:
+```bash
+php artisan migrate
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+6. **Seed database** (imports CSV data):
+```bash
+php artisan db:seed
+```
 
-## Code of Conduct
+7. **Start server**:
+```bash
+php artisan serve
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+API will be available at `http://127.0.0.1:8000`
 
-## Security Vulnerabilities
+## API Endpoints
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Driver Metrics
 
-## License
+- `GET /api/metrics/summary` - Fleet summary (cached 5 min)
+- `GET /api/metrics/top-violators` - Top 10 drivers by violations
+- `GET /api/metrics/interventions` - Drivers needing intervention (accidents > 2)
+- `GET /api/metrics/rating-trends` - Rating distribution
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Driver Info
+
+- `GET /api/drivers` - List all drivers
+- `GET /api/drivers/{id}` - Get driver details
+
+## Database Schema
+
+**driver_profiles** table:
+- `id` - Primary key
+- `driver_id` - Driver identifier
+- `date` - Record date
+- `delays_minutes` - Delay time
+- `behavioral_problems` - Behavioral issue count
+- `violations_count` - Violation count
+- `accidents_count` - Accident count
+- `rating` - Driver rating (decimal 3,2)
+- `created_at`, `updated_at` - Timestamps
+
+## SQL Aggregations
+
+See `db/aggregations.sql` for example queries:
+- Average delays per driver
+- Weekly totals and averages
+
+## Tech Stack
+
+- Laravel 12
+- MySQL 8.0
+- Redis (caching)
+- PHP 8.2
