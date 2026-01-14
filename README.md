@@ -101,7 +101,6 @@ The dashboard connects to these Laravel API endpoints:
 - **Public dashboard link**: `http://localhost:3001/public/dashboard/be9e12ff-e30d-41e7-8b84-25fa844ad37d`
 - [Metabase - Driver Performance Dashboard.pdf](https://github.com/user-attachments/files/24606831/Metabase.-.Driver.Performance.Dashboard.pdf)
 
-
 Note: because this uses `localhost`, it’s only accessible on your computer unless you host it.
 
 ## Development Notes
