@@ -14,3 +14,5 @@ Route::get('/metrics/summary', [DriverMetricsController::class, 'weeklySummary']
 Route::get('/metrics/top-violators', [DriverMetricsController::class, 'topViolators']);
 Route::get('/metrics/interventions', [DriverMetricsController::class, 'needsIntervention']);
 Route::get('/metrics/rating-trends', [DriverMetricsController::class, 'ratingTrends']);
+Route::get('/drivers-list', [DriverMetricsController::class, 'getDriverList']);
+Route::get('/metrics/driver/{id}', [DriverMetricsController::class, 'getDriverDetails']);

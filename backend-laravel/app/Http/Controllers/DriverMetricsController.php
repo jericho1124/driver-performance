@@ -54,4 +54,56 @@ class DriverMetricsController extends Controller
 
         return response()->json($data);
     }
+
+    // 5. Get List of Drivers (ID and Name only) for the Dropdown
+    public function getDriverList() {
+        // Cache this list for 10 minutes
+        return Cache::remember('driver_list', 600, function () {
+            return DB::table('driver_profiles')
+                ->select('driver_id')
+                ->distinct()
+                ->orderBy('driver_id')
+                ->get()
+                ->map(function ($item) {
+                    return [
+                        'id' => $item->driver_id,
+                        'name' => 'Driver ' . $item->driver_id
+                    ];
+                });
+        });
+    }
+
+    // 6. Drilldown: Get Single Driver Details
+    public function getDriverDetails($id) {
+        $cacheKey = "driver_details_{$id}";
+
+        $driver = Cache::remember($cacheKey, 60, function () use ($id) {
+            return DB::table('driver_profiles')
+                ->where('driver_id', $id)
+                ->select(
+                    DB::raw('SUM(delays_minutes) as total_delays'),
+                    DB::raw('SUM(accidents_count) as total_accidents'),
+                    DB::raw('SUM(violations_count) as total_violations'),
+                    DB::raw('AVG(rating) as avg_rating'),
+                    DB::raw('COUNT(*) as total_records')
+                )
+                ->first();
+        });
+
+        if (!$driver) {
+            return response()->json(['error' => 'Driver not found'], 404);
+        }
+
+        return response()->json([
+            'id' => $id,
+            'driver_id' => $id,
+            'name' => 'Driver ' . $id,
+            'total_delays' => $driver->total_delays,
+            'accidents_count' => $driver->total_accidents,
+            'violations_count' => $driver->total_violations,
+            'rating' => round($driver->avg_rating, 2),
+            'total_records' => $driver->total_records,
+            'created_at' => now()->subDays(rand(30, 365))->toDateString() // Simulated join date
+        ]);
+    }
 }
