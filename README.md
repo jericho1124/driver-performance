@@ -12,7 +12,7 @@ Next.js frontend for visualizing driver performance metrics and analytics.
 ## Tech Stack
 
 - **Next.js 16** 
-- **TypeScript** -
+- **TypeScript**
 - **Tailwind CSS 4** 
 - **Chart.js** 
 - **SWR** 
