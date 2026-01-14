@@ -8,16 +8,15 @@ Next.js frontend for visualizing driver performance metrics and analytics.
 - Fleet summary statistics (total drivers, average rating, accidents)
 - Interactive rating distribution chart
 - Auto-refreshing data with SWR
-- Responsive design with Tailwind CSS
-
+  
 ## Tech Stack
 
-- **Next.js 16** - React framework
-- **TypeScript** - Type safety
-- **Tailwind CSS 4** - Styling
-- **Chart.js** - Data visualization
-- **SWR** - Data fetching & caching
-- **Axios** - HTTP client
+- **Next.js 16** 
+- **TypeScript** -
+- **Tailwind CSS 4** 
+- **Chart.js** 
+- **SWR** 
+- **Axios** 
 
 ## Prerequisites
 
@@ -72,8 +71,6 @@ The dashboard connects to these Laravel API endpoints:
 
 - `/api/metrics/summary` - Fleet summary statistics
 - `/api/metrics/rating-trends` - Rating distribution data
-
-Data refreshes automatically using SWR's revalidation.
 
 ## Development Notes
 
