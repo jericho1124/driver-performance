@@ -1,6 +1,9 @@
-# Driver Performance Dashboard
+[Metabase - Driver Performance Dashboard.pdf](https://github.com/user-attachments/files/24606784/Metabase.-.Driver.Performance.Dashboard.pdf)# Driver Performance Dashboard
 
-Next.js frontend for visualizing driver performance metrics and analytics.
+Full-stack driver performance project:
+- **Backend**: Laravel API + MySQL + Redis
+- **Frontend**: Next.js dashboard (proxies `/api/*` to Laravel)
+- **BI (optional)**: Metabase dashboard
 
 ## Features
 
@@ -22,25 +25,42 @@ Next.js frontend for visualizing driver performance metrics and analytics.
 
 - Node.js 20+
 - npm or yarn
-- Laravel backend running on `http://127.0.0.1:8000`
+- PHP 8.2+ and Composer (for Laravel)
+- Docker & Docker Compose (for MySQL, Redis, Metabase)
 
-## Installation
+## Quickstart (run everything locally)
 
-1. **Install dependencies**:
+### 1) Start Docker services (MySQL + Redis + Metabase)
+
+From the repo root:
+
 ```bash
-npm install
+docker-compose up -d
 ```
 
-2. **Configure API proxy** (already set in `next.config.ts`):
-   - The app proxies `/api/*` requests to Laravel backend at `http://127.0.0.1:8000`
+### 2) Start Laravel API
 
-3. **Run development server**:
 ```bash
+cd backend-laravel
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+php artisan db:seed
+php artisan serve
+```
+
+Laravel will run at `http://127.0.0.1:8000`.
+
+### 3) Start Next.js frontend
+
+```bash
+cd ../frontend-next
+npm install
 npm run dev
 ```
 
-4. **Open browser**:
-   - Navigate to `http://localhost:3000`
+Open `http://localhost:3000`.
 
 ## Available Scripts
 
@@ -54,6 +74,7 @@ npm run lint     # Run ESLint
 ## Project Structure
 
 ```
+backend-laravel/          # Laravel API
 frontend-next/
 ├── app/
 │   ├── page.tsx          # Main dashboard page
@@ -71,11 +92,22 @@ The dashboard connects to these Laravel API endpoints:
 
 - `/api/metrics/summary` - Fleet summary statistics
 - `/api/metrics/rating-trends` - Rating distribution data
+- `/api/drivers-list` - Dropdown driver list
+- `/api/metrics/driver/{id}` - Driver detail (modal)
+
+## Metabase
+
+- **Metabase UI**: `http://localhost:3001`
+- **Public dashboard link**: `http://localhost:3001/public/dashboard/be9e12ff-e30d-41e7-8b84-25fa844ad37d`
+- [Metabase - Driver Performance Dashboard.pdf](https://github.com/user-attachments/files/24606787/Metabase.-.Driver.Performance.Dashboard.pdf)
+
+
+Note: because this uses `localhost`, it’s only accessible on your computer unless you host it.
 
 ## Development Notes
 
-- Ensure Laravel backend is running before starting the frontend
-- The API proxy is configured in `next.config.ts`
+- Ensure Laravel is running before starting the frontend
+- The API proxy is configured in `frontend-next/next.config.ts`
 - All API calls use relative paths (e.g., `/api/metrics/summary`)
 - SWR handles caching and automatic revalidation
 
@@ -99,3 +131,5 @@ npm run start
 ```
 
 The production build will be optimized and ready for deployment.
+
+
