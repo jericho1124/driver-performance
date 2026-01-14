@@ -1,6 +1,4 @@
 <img width="500" height="450" alt="image" src="https://github.com/user-attachments/assets/dee5ba2c-b497-4333-b4da-64ca056aa0ce" />
-<img width="500" height="700" alt="257f83c8-7128-436a-bb3e-9fdfd3069704" src="https://github.com/user-attachments/assets/64991c48-9576-45bd-adc3-d5b743fb05a5" />
-
 
 # Driver Performance Dashboard
 
