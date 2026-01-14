@@ -121,3 +121,4 @@ Note: because this uses `localhost`, it’s only accessible on your computer unl
 - Check browser console for errors
 - Verify `/api/metrics/rating-trends` returns valid data
 - Ensure Chart.js is properly registered
+
