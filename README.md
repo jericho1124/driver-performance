@@ -3,7 +3,7 @@
 Full-stack driver performance project:
 - **Backend**: Laravel API + MySQL + Redis
 - **Frontend**: Next.js dashboard (proxies `/api/*` to Laravel)
-- **BI (optional)**: Metabase dashboard
+- **BI**: Metabase dashboard
 
 ## Features
 
