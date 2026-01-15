@@ -44,13 +44,28 @@ class DriverMetricsController extends Controller
     }
 
     // 4. Rating Distribution (The "Trend" of your Fleet)
-    public function ratingTrends() {
-        $data = [
-            '5_star' => Driver::where('rating', '>=', 4.5)->count(),
-            '4_star' => Driver::whereBetween('rating', [3.5, 4.49])->count(),
-            '3_star' => Driver::whereBetween('rating', [2.5, 3.49])->count(),
-            'risk_group' => Driver::where('rating', '<', 2.5)->count(),
-        ];
+    public function ratingTrends(Request $request) {
+        $month = $request->query('month');
+        $cacheKey = $month ? "rating_trends_{$month}" : 'rating_trends_all';
+
+        $data = Cache::remember($cacheKey, 300, function () use ($month) {
+            $applyMonthFilter = function($query) use ($month) {
+                if ($month) {
+                    $startDate = "{$month}-01";
+                    $endDate = date('Y-m-d', strtotime("{$month}-01 +1 month"));
+                    return $query->where('date', '>=', $startDate)
+                                 ->where('date', '<', $endDate);
+                }
+                return $query;
+            };
+
+            return [
+                '5_star' => $applyMonthFilter(DB::table('driver_profiles'))->where('rating', '>=', 4.5)->count(),
+                '4_star' => $applyMonthFilter(DB::table('driver_profiles'))->whereBetween('rating', [3.5, 4.49])->count(),
+                '3_star' => $applyMonthFilter(DB::table('driver_profiles'))->whereBetween('rating', [2.5, 3.49])->count(),
+                'risk_group' => $applyMonthFilter(DB::table('driver_profiles'))->where('rating', '<', 2.5)->count(),
+            ];
+        });
 
         return response()->json($data);
     }
