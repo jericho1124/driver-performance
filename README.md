@@ -1,4 +1,6 @@
-<img width="500" height="450" alt="image" src="https://github.com/user-attachments/assets/dee5ba2c-b497-4333-b4da-64ca056aa0ce" />
+<img width="400" height="350" alt="Metabase Dashboard" src="https://github.com/user-attachments/assets/dee5ba2c-b497-4333-b4da-64ca056aa0ce" />
+<img width="400" height="350" alt="Next.js Dashboard" src="https://github.com/user-attachments/assets/76b254e4-42d1-490f-900b-76b12b680545" />
+
 
 # Driver Performance Dashboard
 
