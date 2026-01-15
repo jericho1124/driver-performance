@@ -1,0 +1,486 @@
+{
+	"info": {
+		"_postman_id": "3b2400c2-a639-4020-be9a-9d3285aa6c47",
+		"name": "My Collection",
+		"description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "51534874",
+		"_collection_link": "https://jericholayos187-1005341.postman.co/workspace/Jericho-Layos's-Workspace~922f28db-feb4-4737-8cec-3f8cb3d19838/collection/51534874-3b2400c2-a639-4020-be9a-9d3285aa6c47?action=share&source=collection_link&creator=51534874"
+	},
+	"item": [
+		{
+			"name": "Get Fleet Summary",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/metrics/summary",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"metrics",
+						"summary"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/metrics/summary",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"metrics",
+								"summary"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 15 Jan 2026 08:55:54 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"total_drivers\": 4500,\n        \"total_delays\": \"68871\",\n        \"total_accidents\": \"56\",\n        \"avg_rating\": \"3.906511\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get Rating Trends",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/metrics/rating-trends",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"metrics",
+						"rating-trends"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/metrics/rating-trends",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"metrics",
+								"rating-trends"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 15 Jan 2026 08:57:12 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"5_star\": 539,\n    \"4_star\": 2930,\n    \"3_star\": 964,\n    \"risk_group\": 67\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Rating Trends by Month",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/metrics/rating-trends?month=2025-03",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"metrics",
+						"rating-trends"
+					],
+					"query": [
+						{
+							"key": "month",
+							"value": "2025-03"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/metrics/rating-trends?month=2025-03",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"metrics",
+								"rating-trends"
+							],
+							"query": [
+								{
+									"key": "month",
+									"value": "2025-03"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 15 Jan 2026 08:58:18 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"5_star\": 186,\n    \"4_star\": 1000,\n    \"3_star\": 342,\n    \"risk_group\": 22\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Top Violators",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/metrics/top-violators",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"metrics",
+						"top-violators"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/metrics/top-violators",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"metrics",
+								"top-violators"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 15 Jan 2026 08:58:52 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 4294,\n        \"driver_id\": 48,\n        \"date\": \"2025-03-05\",\n        \"delays_minutes\": 14,\n        \"behavioral_problems\": 0,\n        \"violations_count\": 3,\n        \"accidents_count\": 0,\n        \"rating\": \"3.46\",\n        \"created_at\": \"2026-01-13T10:28:32.000000Z\",\n        \"updated_at\": \"2026-01-13T10:28:32.000000Z\"\n    },\n    {\n        \"id\": 1123,\n        \"driver_id\": 13,\n        \"date\": \"2025-02-12\",\n        \"delays_minutes\": 23,\n        \"behavioral_problems\": 0,\n        \"violations_count\": 2,\n        \"accidents_count\": 0,\n        \"rating\": \"3.28\",\n        \"created_at\": \"2026-01-13T10:28:32.000000Z\",\n        \"updated_at\": \"2026-01-13T10:28:32.000000Z\"\n    },\n    {\n        \"id\": 521,\n        \"driver_id\": 6,\n        \"date\": \"2025-03-12\",\n        \"delays_minutes\": 26,\n        \"behavioral_problems\": 0,\n        \"violations_count\": 2,\n        \"accidents_count\": 0,\n        \"rating\": \"3.50\",\n        \"created_at\": \"2026-01-13T10:28:32.000000Z\",\n        \"updated_at\": \"2026-01-13T10:28:32.000000Z\"\n    },\n    {\n        \"id\": 1121,\n        \"driver_id\": 13,\n        \"date\": \"2025-02-10\",\n        \"delays_minutes\": 9,\n        \"behavioral_problems\": 0,\n        \"violations_count\": 2,\n        \"accidents_count\": 0,\n        \"rating\": \"3.28\",\n        \"created_at\": \"2026-01-13T10:28:32.000000Z\",\n        \"updated_at\": \"2026-01-13T10:28:32.000000Z\"\n    },\n    {\n        \"id\": 517,\n        \"driver_id\": 6,\n        \"date\": \"2025-03-08\",\n        \"delays_minutes\": 32,\n        \"behavioral_problems\": 0,\n        \"violations_count\": 2,\n        \"accidents_count\": 0,\n        \"rating\": \"3.40\",\n        \"created_at\": \"2026-01-13T10:28:32.000000Z\",\n        \"updated_at\": \"2026-01-13T10:28:32.000000Z\"\n    },\n    {\n        \"id\": 637,\n        \"driver_id\": 8,\n        \"date\": \"2025-01-07\",\n        \"delays_minutes\": 32,\n        \"behavioral_problems\": 0,\n        \"violations_count\": 2,\n        \"accidents_count\": 0,\n        \"rating\": \"3.42\",\n        \"created_at\": \"2026-01-13T10:28:32.000000Z\",\n        \"updated_at\": \"2026-01-13T10:28:32.000000Z\"\n    },\n    {\n        \"id\": 1149,\n        \"driver_id\": 13,\n        \"date\": \"2025-03-10\",\n        \"delays_minutes\": 26,\n        \"behavioral_problems\": 0,\n        \"violations_count\": 2,\n        \"accidents_count\": 0,\n        \"rating\": \"3.28\",\n        \"created_at\": \"2026-01-13T10:28:32.000000Z\",\n        \"updated_at\": \"2026-01-13T10:28:32.000000Z\"\n    },\n    {\n        \"id\": 827,\n        \"driver_id\": 10,\n        \"date\": \"2025-01-17\",\n        \"delays_minutes\": 16,\n        \"behavioral_problems\": 1,\n        \"violations_count\": 2,\n        \"accidents_count\": 0,\n        \"rating\": \"3.46\",\n        \"created_at\": \"2026-01-13T10:28:32.000000Z\",\n        \"updated_at\": \"2026-01-13T10:28:32.000000Z\"\n    },\n    {\n        \"id\": 815,\n        \"driver_id\": 10,\n        \"date\": \"2025-01-05\",\n        \"delays_minutes\": 15,\n        \"behavioral_problems\": 0,\n        \"violations_count\": 2,\n        \"accidents_count\": 0,\n        \"rating\": \"3.46\",\n        \"created_at\": \"2026-01-13T10:28:32.000000Z\",\n        \"updated_at\": \"2026-01-13T10:28:32.000000Z\"\n    },\n    {\n        \"id\": 812,\n        \"driver_id\": 10,\n        \"date\": \"2025-01-02\",\n        \"delays_minutes\": 20,\n        \"behavioral_problems\": 0,\n        \"violations_count\": 2,\n        \"accidents_count\": 0,\n        \"rating\": \"3.46\",\n        \"created_at\": \"2026-01-13T10:28:32.000000Z\",\n        \"updated_at\": \"2026-01-13T10:28:32.000000Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get Driver List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/drivers-list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"drivers-list"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/drivers-list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"drivers-list"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 15 Jan 2026 09:00:19 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Driver 1\"\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Driver 2\"\n    },\n    {\n        \"id\": 3,\n        \"name\": \"Driver 3\"\n    },\n    {\n        \"id\": 4,\n        \"name\": \"Driver 4\"\n    },\n    {\n        \"id\": 5,\n        \"name\": \"Driver 5\"\n    },\n    {\n        \"id\": 6,\n        \"name\": \"Driver 6\"\n    },\n    {\n        \"id\": 7,\n        \"name\": \"Driver 7\"\n    },\n    {\n        \"id\": 8,\n        \"name\": \"Driver 8\"\n    },\n    {\n        \"id\": 9,\n        \"name\": \"Driver 9\"\n    },\n    {\n        \"id\": 10,\n        \"name\": \"Driver 10\"\n    },\n    {\n        \"id\": 11,\n        \"name\": \"Driver 11\"\n    },\n    {\n        \"id\": 12,\n        \"name\": \"Driver 12\"\n    },\n    {\n        \"id\": 13,\n        \"name\": \"Driver 13\"\n    },\n    {\n        \"id\": 14,\n        \"name\": \"Driver 14\"\n    },\n    {\n        \"id\": 15,\n        \"name\": \"Driver 15\"\n    },\n    {\n        \"id\": 16,\n        \"name\": \"Driver 16\"\n    },\n    {\n        \"id\": 17,\n        \"name\": \"Driver 17\"\n    },\n    {\n        \"id\": 18,\n        \"name\": \"Driver 18\"\n    },\n    {\n        \"id\": 19,\n        \"name\": \"Driver 19\"\n    },\n    {\n        \"id\": 20,\n        \"name\": \"Driver 20\"\n    },\n    {\n        \"id\": 21,\n        \"name\": \"Driver 21\"\n    },\n    {\n        \"id\": 22,\n        \"name\": \"Driver 22\"\n    },\n    {\n        \"id\": 23,\n        \"name\": \"Driver 23\"\n    },\n    {\n        \"id\": 24,\n        \"name\": \"Driver 24\"\n    },\n    {\n        \"id\": 25,\n        \"name\": \"Driver 25\"\n    },\n    {\n        \"id\": 26,\n        \"name\": \"Driver 26\"\n    },\n    {\n        \"id\": 27,\n        \"name\": \"Driver 27\"\n    },\n    {\n        \"id\": 28,\n        \"name\": \"Driver 28\"\n    },\n    {\n        \"id\": 29,\n        \"name\": \"Driver 29\"\n    },\n    {\n        \"id\": 30,\n        \"name\": \"Driver 30\"\n    },\n    {\n        \"id\": 31,\n        \"name\": \"Driver 31\"\n    },\n    {\n        \"id\": 32,\n        \"name\": \"Driver 32\"\n    },\n    {\n        \"id\": 33,\n        \"name\": \"Driver 33\"\n    },\n    {\n        \"id\": 34,\n        \"name\": \"Driver 34\"\n    },\n    {\n        \"id\": 35,\n        \"name\": \"Driver 35\"\n    },\n    {\n        \"id\": 36,\n        \"name\": \"Driver 36\"\n    },\n    {\n        \"id\": 37,\n        \"name\": \"Driver 37\"\n    },\n    {\n        \"id\": 38,\n        \"name\": \"Driver 38\"\n    },\n    {\n        \"id\": 39,\n        \"name\": \"Driver 39\"\n    },\n    {\n        \"id\": 40,\n        \"name\": \"Driver 40\"\n    },\n    {\n        \"id\": 41,\n        \"name\": \"Driver 41\"\n    },\n    {\n        \"id\": 42,\n        \"name\": \"Driver 42\"\n    },\n    {\n        \"id\": 43,\n        \"name\": \"Driver 43\"\n    },\n    {\n        \"id\": 44,\n        \"name\": \"Driver 44\"\n    },\n    {\n        \"id\": 45,\n        \"name\": \"Driver 45\"\n    },\n    {\n        \"id\": 46,\n        \"name\": \"Driver 46\"\n    },\n    {\n        \"id\": 47,\n        \"name\": \"Driver 47\"\n    },\n    {\n        \"id\": 48,\n        \"name\": \"Driver 48\"\n    },\n    {\n        \"id\": 49,\n        \"name\": \"Driver 49\"\n    },\n    {\n        \"id\": 50,\n        \"name\": \"Driver 50\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get Driver Details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/metrics/driver/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"metrics",
+						"driver",
+						"3"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/metrics/driver/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"metrics",
+								"driver",
+								"3"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 15 Jan 2026 09:01:10 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"3\",\n    \"driver_id\": \"3\",\n    \"name\": \"Driver 3\",\n    \"total_delays\": \"1168\",\n    \"accidents_count\": \"0\",\n    \"violations_count\": \"3\",\n    \"rating\": 4.19,\n    \"total_records\": 90,\n    \"created_at\": \"2025-04-16\"\n}"
+				}
+			]
+		}
+	]
+}
