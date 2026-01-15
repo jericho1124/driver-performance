@@ -1,3 +1,7 @@
+<img width="828" height="582" alt="image" src="https://github.com/user-attachments/assets/092076d8-618a-4043-803e-23dce5e6d1b0" />
+
+
+
 # Driver Performance Dashboard
 
 Full-stack driver performance project:
